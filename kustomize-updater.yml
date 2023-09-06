@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: argocd-image-updater
   namespace: argocd
 spec:
   destination:
-    namespace: kustomize-app
+    namespace: argocd
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kustomize-app
+    path: manifests/argocd-image-updater/overlays/dev
     repoURL: https://github.com/marat-biriushev/argocd-example-apps
     targetRevision: test
   syncPolicy:
